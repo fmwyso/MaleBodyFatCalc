@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Male Body Fat Calculator</title>
+    </head>
+    <script>
+        function updateBodyFat() {
+            var height = document.querySelector("#heightBox").value;
+            var neckCirc = document.querySelector("#neckCircBox").value;
+            var abdoCirc = document.querySelector("#abdoCircBox").value;
+
+            var bodyFat = 86.010*Math.log10(abdoCirc - neckCirc) - 70*Math.log10(height) + 36.76;
+
+            document.querySelector("#ResultsLabel").innerHTML = "Body Fat: " + bodyFat.toFixed(2) + "%";
+        }
+    </script>
+    <body>
+    <div>
+        <label for="heightBox">Height</label>
+        <input type="number" value=68.5 step=0.5 id="heightBox" onChange="updateBodyFat()"></input>
+    </div>
+
+    <div>
+        <label for="neckCircBox">Neck Circumference</label>
+        <input type="number" value=14.79 step=0.5 id="neckCircBox" onChange="updateBodyFat()"></input>
+    </div>
+
+    <div>
+        <label for="abdoCircBox">Abdomen Circumference</label>
+        <input type="number" value=38.14 step=0.5 id="abdoCircBox" onChange="updateBodyFat()"></input>
+    </div>
+
+    <div>
+        <label id="ResultsLabel"></label>
+    </div>
+
+    <br /><br /><br />
+    <p>Based on https://www.wikihow.com/Measure-Body-Fat-Using-the-US-Navy-Method</p>
+    </body>
+</html>
